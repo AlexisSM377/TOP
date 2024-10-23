@@ -1,0 +1,42 @@
+<section
+  class="mt-32 mx-auto flex flex-col justify-center items-center text-center text-gray-500"
+>
+  <h2 class="uppercase text-5xl font-semibold">
+    20 de febrero de 2025 <span aria-hidden class="hidden md:inline mx-1"
+      >.</span
+    ><br aria-hidden class="block md:hidden" />
+    <span>
+      <script is:inline>
+        const END_DATE = 1740063600000;
+        const d = new Date(END_DATE);
+        const date = d.toLocaleTimeString("es", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        //get current timezone
+        const tzOffset = d.getTimezoneOffset() / 60;
+        const diff = tzOffset * -1;
+        const gmt = diff > 0 ? `GMT+${diff}` : `GMT-${Math.abs(diff)}`;
+
+        const TZ_DICTIONARY = {
+          "GMT-6": "CDMX",
+          "GMT-5": "NYC",
+          "GMT+1": "Londres",
+          "GMT+2": "Berlin",
+          "GMT+9": "Tokio",
+        };
+
+        const tz = TZ_DICTIONARY[gmt] ?? gmt;
+
+        const selfScript = document.currentScript;
+        selfScript.parentNode.innerHTML = `${date} H ${tz}`;
+      </script>
+    </span>
+  </h2>
+
+  <h3 class="text-3xl font-semibold flex max-w-sm mt-6 flex-col">
+    <span>Twenty One Pilots - The Clancy World Tour</span>
+    <span>Cdmx, DF Estadio GNP Seguros</span>
+  </h3>
+</section>
