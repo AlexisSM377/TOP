@@ -1,12 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Countdown from "../components/Countdown.astro";
-import PrincipalDate from "../components/PrincipalDate.astro";
+import Layout from "@/layouts/Layout.astro";
+import Countdown from "@/sections/Countdown.astro";
+import Hero from "@/sections/Hero.astro";
+import PrincipalDate from "@/sections/PrincipalDate.astro";
 ---
 
-<Layout title="TOP">
-  <main class="mx-auto max-w-4xl">
+<Layout title="tøp">
+  <Hero />
+  <main>
     <PrincipalDate />
     <Countdown />
   </main>
