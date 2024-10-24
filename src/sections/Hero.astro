@@ -1,0 +1,33 @@
+---
+import HeroLogo from "@/components/HeroLogo.astro";
+---
+
+<section class="flex flex-col justify-center items-center pt-40 gap-9">
+  <span
+    class="text-red-500 uppercase py-1 mb-9 font-medium text-5xl text-center md:text-4xl"
+    >The clancy world tour</span
+  >
+  <HeroLogo
+    class="hero-logo w-full h-auto"
+    style="max-width: 97%; height: auto;"
+  />
+</section>
+
+<style>
+  .hero-logo {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .hero-logo {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-logo {
+      width: 60%;
+    }
+  }
+</style>
