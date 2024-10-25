@@ -1,13 +1,19 @@
 ---
+import Background from "@/components/Background.astro";
 import Layout from "@/layouts/Layout.astro";
+import BannerCard from "@/sections/BannerCard.astro";
 import Countdown from "@/sections/Countdown.astro";
 import Hero from "@/sections/Hero.astro";
 import PrincipalDate from "@/sections/PrincipalDate.astro";
 ---
 
-<Layout title="tøp">
-  <Hero />
-  <main>
+<Layout title="The clancy world tour">
+  <Background>
+    <BannerCard />
+  </Background>
+
+  <main class="max-w-6xl mx-auto px-10">
+    <Hero />
     <PrincipalDate />
     <Countdown />
   </main>

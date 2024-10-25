@@ -1,0 +1,93 @@
+---
+import Top from "@/Icons/Top.astro";
+import Scaled from "@/Icons/Scaled.astro";
+import Trench from "@/Icons/Trench.astro";
+import Blurryface from "@/Icons/Blurryface.astro";
+import Regional from "@/Icons/Regional.astro";
+---
+
+<div class="absolute inset-0 pointer-events-none">
+  <div
+    id="icons"
+    class="relative [&>svg]:p-4 [&>svg]:w-24 [&>svg]:h-24 [&>svg]:fill-current [&>svg]:opacity-0 [&>svg]:absolute h-full"
+  >
+    <Regional />
+    <Regional />
+    <Regional />
+    <Regional />
+    <Regional />
+    <Regional />
+    <Regional />
+    <Regional />
+    <Top />
+    <Top />
+    <Top />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Blurryface />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Scaled />
+    <Trench />
+    <Trench />
+    <Trench />
+    <Trench />
+    <Trench />
+    <Trench />
+    <Trench />
+    <Trench />
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const icons = document.querySelectorAll(
+      "#icons > svg"
+    ) as NodeListOf<SVGElement>;
+    const container = document.getElementById("icons");
+
+    function animateIcon(icon: SVGElement) {
+      if (!container) return;
+      const startX = Math.random() * (container.clientWidth - icon.clientWidth);
+      const startY =
+        Math.random() * (container.clientHeight - icon.clientHeight);
+
+      icon.style.left = `${startX}px`;
+      icon.style.top = `${startY}px`;
+
+      // random number from 0.1 and 0.3
+      const to = Math.random() * 0.3 + 0.1;
+      const animation = icon.animate(
+        [
+          { opacity: 0, transform: "translateY(0)" },
+          { opacity: to },
+          { opacity: 0, transform: "translateY(50px)", offset: 1 },
+        ],
+        {
+          duration: 5000,
+          easing: "ease-in-out",
+          fill: "forwards",
+        }
+      );
+
+      animation.onfinish = () => {
+        setTimeout(() => animateIcon(icon), Math.random() * 4000);
+      };
+    }
+
+    icons.forEach((icon) => {
+      icon.style.position = "absolute";
+      setTimeout(() => animateIcon(icon), Math.random() * 5000);
+    });
+  });
+</script>

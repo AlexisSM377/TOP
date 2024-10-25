@@ -14,14 +14,14 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="The clancy word tour" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
-    <div class="max-w-6xl px-10 mx-auto">
+    <div>
       <Header />
       <slot />
       <Footer />
@@ -36,7 +36,24 @@ const { title } = Astro.props;
 
   body {
     color: #212121;
+    background-color: #231f20;
+    position: relative;
     font-family: "Martian Mono Variable", monospace;
+  }
+
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(30, 106, 172);
+    background-image: url("/clancy-hero-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(10px);
+    opacity: 0.2;
+    z-index: -1;
   }
 
   @media (prefers-color-scheme: dark) {
