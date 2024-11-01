@@ -2,13 +2,13 @@
 import Layout from "@/layouts/Layout.astro";
 import Countdown from "@/sections/Countdown.astro";
 import Hero from "@/sections/Hero.astro";
+import HeroCard from "@/sections/HeroCard.astro";
 import PrincipalDate from "@/sections/PrincipalDate.astro";
 ---
 
 <Layout title="tøp">
+  <HeroCard />
   <Hero />
-  <main>
-    <PrincipalDate />
-    <Countdown />
-  </main>
+  <PrincipalDate />
+  <Countdown />
 </Layout>

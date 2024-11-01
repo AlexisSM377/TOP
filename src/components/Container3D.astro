@@ -1,0 +1,32 @@
+<div class="atropos my-atropos">
+  <div class="atropos-scale">
+    <div class="atropos-rotate">
+      <div class="atropos-inner">
+        <div class="relative z-[1000] w-full h-auto mx-auto md:aspect-[2/1]">
+          <div class="h-full opacity-100 isolate md:aspect-[2/1]">
+            <div class="h-full">
+              <div class="backdrop-blur-xl rounded-[60px]">
+                <div
+                  class="block w-full h-auto mx-auto shadow-2xl md:aspect-[2/1] [box-sizing:border-box]"
+                >
+                  <slot />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Atropos from "atropos";
+  import "atropos/css";
+  const atroposInstance = Atropos({
+    el: ".my-atropos", // Selector del contenedor
+    activeOffset: 40, // Configuración de ángulo de movimiento
+    shadowScale: 1.05, // Escala de sombra}
+    shadowOffset: 30, // Desplazamiento de sombra
+  });
+</script>
