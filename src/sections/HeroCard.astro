@@ -1,5 +1,9 @@
 ---
+import TicketSpotify from "@/components/TicketSpotify.astro";
+import { TicketHomeE } from "./ticket-home";
 import TicketHome from "./ticketHome.astro";
+import Trench from "@/icons/Trench.astro";
+import { Container3D } from "@/components/Container3D";
 ---
 
 <section
@@ -13,6 +17,25 @@ import TicketHome from "./ticketHome.astro";
     </h2>
     <h3 class="text-yellow-300 text-lg text-center pb-4">Twenty One Pilots</h3>
     <hr class="pt-8 mt-16" />
-    <TicketHome />
+    <Container3D>
+      <TicketSpotify
+        number={12345}
+        flavor={{
+          icon: Trench,
+          colorPalete: {
+            bg: "bg-[#007acc]/50",
+            border: {
+              inside: "border-blue-300/20",
+              outside: "border-blue-400/10",
+            },
+            shadowColor: "shadow-blue-400/25",
+          },
+        }}
+        user={{
+          username: "AlexisSM377",
+          avatar: "https://unavatar.io/github/AlexisSM377",
+        }}
+      />
+    </Container3D>
   </div>
 </section>

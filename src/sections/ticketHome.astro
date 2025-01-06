@@ -1,9 +1,10 @@
 ---
-import Container3D from "@/components/Container3D.astro";
 import { Image } from "astro:assets";
 import myImportedImage from "/public/img/clancy-hero-banner.jpg";
 import TicketSpotify from "@/components/TicketSpotify.astro";
 import Twenty from "@/icons/Twenty.astro";
+import Trench from "@/icons/Trench.astro";
+import { Container3D } from "@/components/Container3D";
 ---
 
 <div>
@@ -15,14 +16,14 @@ import Twenty from "@/icons/Twenty.astro";
         <TicketSpotify
           number={12345}
           flavor={{
-            icon: Twenty,
+            icon: Trench,
             colorPalete: {
-              bg: "bg-[#ffffff]/80",
+              bg: "bg-[#007acc]/50",
               border: {
-                outside: "border-white-200/10",
-                inside: "border-white-400/10",
+                inside: "border-blue-300/20",
+                outside: "border-blue-400/10",
               },
-              shadowColor: "shadow-white-400/25",
+              shadowColor: "shadow-blue-400/25",
             },
           }}
           user={{
@@ -30,12 +31,6 @@ import Twenty from "@/icons/Twenty.astro";
             avatar: "https://unavatar.io/github/AlexisSM377",
           }}
         />
-        <Image
-          class="block w-full h-auto mx-auto md:aspect-[2/1] [box-sizing:border-box] relative z-[1000]"
-          src={myImportedImage}
-          alt="Clancy"
-        />
-        <p>Alexis</p>
       </Container3D>
     </div>
   </div>

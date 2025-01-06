@@ -1,5 +1,6 @@
 ---
 import Top from "./top.astro";
+import "atropos/css";
 
 interface Props {
   transition?: boolean;
@@ -27,7 +28,7 @@ const {
   transition = true,
   number,
   class: className,
-  flavor: { icon: Imagen, colorPalete },
+  flavor: { icon: Icon, colorPalete },
   user: { username, avatar },
   isSizeFixed = false,
 } = Astro.props;
@@ -84,10 +85,7 @@ const currentTicketStyles = {
             : "md:w-auto row-[2/3] mb-8 md:mb-0 left-0 mx-auto md:mx-0 h-32 md:h-[40%] relative flex justify-center w-full md:block bottom-0 md:left-[25%] md:bottom-[20%]  md:absolute",
         ]}
       >
-        <Imagen class="absolute w-auto h-full" />
-        <Imagen
-          class="absolute w-auto h-full scale-105 blur-xl -z-10 opacity-40"
-        />
+        <Icon class="absolute w-auto h-full" />
       </div>
       <div
         class:list={[
@@ -128,22 +126,50 @@ const currentTicketStyles = {
                   </div>
                 </div>
               ) : (
-                <div>
-                  <p>No hay User</p>
+                <div
+                  class:list={[
+                    "flex items-end justify-start gap-4 text-white gap-y-2",
+                    isSizeFixed
+                      ? "items-start flex-row p-6 text-left"
+                      : "p-5 flex-col md:items-start md:flex-row md:p-6 items-center text-center md:text-left",
+                  ]}
+                >
+                  <div
+                    class:list={[
+                      "flex items-end justify-start gap-4 text-white gap-y-2",
+                      isSizeFixed
+                        ? "items-start flex-row p-6 text-left"
+                        : "p-5 flex-col md:items-start md:flex-row md:p-6 items-center text-center md:text-left",
+                    ]}
+                  >
+                    <div>
+                      <p class="text-xl font-bold">
+                        <span class="opacity-75 text-midu-primary">#</span>
+                        miduConf
+                      </p>
+                      <span class="block text-sm font-normal w-max text-white/60">
+                        Evento de Programación Gratuito
+                      </span>
+                    </div>
+                  </div>
                 </div>
               )
             }
           </div>
           <div
             class:list={[
-              "grid items-center justify-center",
-              isSizeFixed ? "grid-cols-2" : "md:grid-cols-2",
+              "items-center gap-4 p-5 flex-row",
+              isSizeFixed && avatar
+                ? "block"
+                : `${avatar ? "hidden" : "flex"} md:block flex-col-reverse md:flex-row`,
+              avatar == null,
+              "hidden",
             ]}
           >
             <Top
               class:list={[
                 "order-1 h-auto w-9",
-                isSizeFixed ? "ml-auto" : "ml-0 md:ml-auto",
+                isSizeFixed ? "ml-auto" : " ml-0 md:ml-auto",
               ]}
             />
           </div>
@@ -153,4 +179,129 @@ const currentTicketStyles = {
   </div>
 </div>
 
-<script></script>
+<style>
+  .ticket-dash-border {
+    background-image: linear-gradient(
+      hsla(0, 0%, 100%, 0.2) 0%,
+      hsla(0, 0%, 100%, 0.2) 50%,
+      transparent 50%
+    );
+    background-size: 0.0625rem 1.125rem;
+    background-position: 100% 0;
+    background-repeat: repeat-y;
+  }
+
+  .ticket-dash-border-top {
+    background-image: linear-gradient(
+      to right,
+      hsla(0, 0%, 100%, 0.2) 0%,
+      hsla(0, 0%, 100%, 0.2) 50%,
+      transparent 50%
+    );
+    background-size: 1.125rem 0.0625rem;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+  }
+
+  .ticket-gradient-bg {
+    background: radial-gradient(
+        120% 100% at 90% 10%,
+        #a3d8ff 0%,
+        #3640e2 23%,
+        #6639d9 50%,
+        #657fd8 74%,
+        #95bdf4 100%
+      ),
+      radial-gradient(
+        120% 100% at 10% 90%,
+        #a3d9ff50 0%,
+        #3640e250 23%,
+        #6639d950 50%,
+        #657fd850 74%,
+        #95bdf450 100%
+      );
+    background-size: 200% 200%;
+    background-blend-mode: multiply;
+    animation: animateGradient 10s infinite alternate linear;
+    z-index: 1;
+  }
+
+  .ticket-gradient-bg::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(
+      -72deg,
+      #ffffff 0%,
+      rgb(0, 0, 0, 0) 16%,
+      #ffffff 24%,
+      rgb(0, 0, 0, 0) 33%,
+      rgb(0, 0, 0, 0) 40%,
+      #fff8f8 50%,
+      rgb(0, 0, 0, 0) 61%,
+      rgb(0, 0, 0, 0) 74%,
+      #ffffff 83%,
+      rgb(0, 0, 0, 0) 92%,
+      #ffffff 100%
+    );
+    background-size: 200% 100%;
+    opacity: 0.4;
+    animation: animateLightGradient 120s infinite alternate linear;
+  }
+
+  .ticket-gradient-bg::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(/public/img/tickets-effect/gradient.png);
+    background-size: 50px 50px;
+    opacity: 0.7;
+  }
+
+  @keyframes animateGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    25% {
+      background-position: 50% 50%;
+    }
+
+    50% {
+      background-position: 100% 100%;
+    }
+
+    75% {
+      background-position: 50% 50%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  @keyframes animateLightGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    25% {
+      background-position: 50% 0%;
+    }
+
+    50% {
+      background-position: 100% 0%;
+    }
+
+    75% {
+      background-position: 50% 0%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+</style>

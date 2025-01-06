@@ -8,6 +8,9 @@ export default {
 					primary: '#5281EB',
 					secondary: '#5281EB'
 				}
+			},
+			screens: {
+				base: '1000px'
 			}
 		},
 	},
